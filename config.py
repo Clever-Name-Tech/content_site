@@ -1,0 +1,1 @@
+database_url = "postgresql://postgres:I8MOuHPEq2C5XXPsd0QQ@containers-us-west-153.railway.app:5540/railway"
