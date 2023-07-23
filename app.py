@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import re
-from config import database_url
+from config import database_url, content_article_table, branding_info_table
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class ContentArticleDB(db.Model):
-    __tablename__ = "content_articles_main_db"
+    __tablename__ = content_article_table
 
     id = db.Column(db.Integer, primary_key=True, index=True)
     request_id = db.Column(db.String)
@@ -42,7 +42,7 @@ class ContentArticleDB(db.Model):
 
 
 class BrandingData(db.Model):
-    __tablename__ = "branding_short_money_matters"
+    __tablename__ = branding_info_table
 
     id = db.Column(db.Integer, primary_key=True, index=True)
     brand_title = db.Column(db.String)
@@ -55,6 +55,18 @@ class BrandingData(db.Model):
     primary_theme_color = db.Column(db.String)
     secondary_theme_color = db.Column(db.String)
     logo_url = db.Column(db.String)
+    favicon_url = db.Column(db.String)
+    brand_disclaimer_3 = db.Column(db.Text)
+    social_url_fb = db.Column(db.String)
+    social_url_twitter = db.Column(db.String)
+    social_url_youtube = db.Column(db.String)
+    social_url_instagram = db.Column(db.String)
+    social_url_pinterest = db.Column(db.String)
+    social_active_fb = db.Column(db.Boolean)
+    social_active_twitter = db.Column(db.Boolean)
+    social_active_youtube = db.Column(db.Boolean)
+    social_active_instagram = db.Column(db.Boolean)
+    social_active_pinterest = db.Column(db.Boolean)
 
 def get_site_theme():
     # Retrieve the single record from the BrandingData table
@@ -94,9 +106,23 @@ def get_branding_data():
         "primary_theme_color": branding_record.primary_theme_color,
         "secondary_theme_color": branding_record.secondary_theme_color,
         "logo_url": branding_record.logo_url,
+        "social_url_fb": branding_record.social_url_fb,
+        "social_url_twitter": branding_record.social_url_twitter,
+        "social_url_youtube": branding_record.social_url_youtube,
+        "social_url_instagram": branding_record.social_url_instagram,
+        "social_url_pinterest": branding_record.social_url_pinterest,
+        "social_active_fb": branding_record.social_active_fb,
+        "social_active_twitter": branding_record.social_active_twitter,
+        "social_active_youtube": branding_record.social_active_youtube,
+        "social_active_instagram": branding_record.social_active_instagram,
+        "social_active_pinterest": branding_record.social_active_pinterest,
     }
 
     return branding_data
+
+
+def filter_published(results, published=True):
+    return [item for item in results if item.published == published]
 
 
 
@@ -104,6 +130,10 @@ def get_core_context():
     recent_articles = ContentArticleDB.query.order_by(ContentArticleDB.id.desc()).limit(20).all()
     featured_articles = ContentArticleDB.query.filter(ContentArticleDB.featured == True).limit(20).all()
     recommended_articles = ContentArticleDB.query.filter(ContentArticleDB.recommended == True).limit(20).all()
+    recent_articles = filter_published(recent_articles)
+    featured_articles = filter_published(featured_articles)
+    recommended_articles = filter_published(recommended_articles)
+
     branding_data = get_branding_data()
 
     core_context = {
@@ -111,7 +141,8 @@ def get_core_context():
         "recent_articles": recent_articles,
         "featured_articles": featured_articles,
         "recommended_articles": recommended_articles,
-        "branding_data": branding_data
+        "branding_data": branding_data,
+        'year': datetime.utcnow().strftime('%Y')
     }
     ########## ADD IN THE SITE THEME TO THE CONTEXT ################
     core_context.update(get_site_theme())
@@ -151,6 +182,8 @@ def get_related_articles(primary_tag):
     related_articles = []
     all_related = ContentArticleDB.query.filter(ContentArticleDB.primary_tag == primary_tag).order_by(
         ContentArticleDB.id.desc()).all()
+
+    all_related = filter_published(all_related)
 
     for related in all_related:
         if related.recommended == True:
@@ -193,7 +226,11 @@ def blog_details(id):
         context['related_articles'] = featured_articles
         context['no_related_flag'] = True
 
-    return render_template("blog-details.html", id=id, **context)
+    if article.published:
+        return render_template("blog-details.html", id=id, **context)
+    else:
+        return {"Error": "The article ID does not exist or the article is not published"}
+
 
 
 @app.route("/topic/<topic_slug>", methods=["GET"])
@@ -203,6 +240,7 @@ def blog_list_topic_view(topic_slug):
     primary_tag = topics['topic_dict'][topic_slug]
 
     topic_articles = ContentArticleDB.query.filter(ContentArticleDB.primary_tag == primary_tag).all()
+    topic_articles = filter_published(topic_articles)
     related_articles = get_related_articles(primary_tag)
 
     context = {
@@ -219,7 +257,9 @@ def blog_list_search_view():
     search_term = request.args.get('search_term')
     search_articles = {}
     search_articles_headline = ContentArticleDB.query.filter(ContentArticleDB.headline.contains(search_term)).all()
+    search_articles = filter_published(search_articles)
     search_articles_summary = ContentArticleDB.query.filter(ContentArticleDB.summary.contains(search_term)).all()
+    search_articles_summary = filter_published(search_articles_summary)
     if len(search_articles_headline) > 0:
         search_articles = search_articles_headline
     if len(search_articles_summary) > 0:

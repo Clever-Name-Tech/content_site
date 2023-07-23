@@ -1,0 +1,310 @@
+/*
+================================================================================
+|                                     HEADER                                   |
+================================================================================
+*/
+.header {
+  width: 100%;
+  min-width: 320px;
+  text-align: left;
+  order: 1;
+  -webkit-order: 1;
+  z-index: 90;
+  margin-bottom: 2rem;
+}
+.header_top {
+  position: relative;
+  z-index: 15;
+  padding-bottom: 0.8rem;
+  /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABSgAAAAICAYAAAD6BREZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACuSURBVHgB7dCxAcAgDMRANk92sz0XrEDFN6f6Kq110cx83b2r6ud5nud5nud5nud5nud5nn/mzeF5nud5nud5nud5nud5PuLN4Xme53me53me53me53k+4s3heZ7neZ7neZ7neZ7neT7izeF5nud5nud5nud5nud5PuLN4Xme53me53me53me53k+4s3heZ7neZ7neZ7neZ7neT7izeF5nud5nud5nud5nud5/rU/T2aKowIR87oAAAAASUVORK5CYII=) no-repeat bottom;*/
+}
+.header_mid {
+  margin: 3.7rem 0 0;
+  padding-bottom: 1rem;
+  position: relative;
+  border-bottom: 2px solid #000000;
+}
+
+.noscroll-tablet .header_top {
+  z-index: 5;
+}
+
+.header_categ {
+  position: relative;
+  height: 2.6rem;
+}
+.header_categ_opener {
+  color: #555555;
+  font-size: 2rem;
+  line-height: 2.5;
+  display: inline-block;
+}
+.header_categ_opener:hover, .header_categ_opener.active {
+  color: #4BA40A;
+
+}
+.header_categ_opener [class^=icon-], .header_categ_opener [class*=" icon-"] {
+  /*margin: 0 0.8rem 0 0;*/
+}
+.header_categ_drop {
+  position: absolute;
+  width: 25rem;
+  box-shadow: 0rem 1rem 1.5rem rgba(0, 0, 0, 0.2);
+  display: none;
+  background: #fff;
+  padding: 2rem 3rem;
+  top: 100%;
+  left: 0;
+}
+.header_categ_drop.opened {
+  display: block;
+}
+.header_categ_drop ul {
+  margin: 0;
+}
+
+
+.header_cols {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0 1rem 0;
+}
+
+.header_nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 -2.1rem 0 -2rem;
+}
+.header_nav li {
+  position: relative;
+  margin: 0 2.1rem 0 2rem;
+}
+.header_nav li:nth-child(4) {
+  margin-left: auto;
+}
+.header_nav li a {
+  font-weight: 600;
+  font-size: 2rem;
+  color: #000000;
+  line-height: 2.5;
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+}
+.header_nav li a:hover {
+  color: #4BA40A;
+}
+.header_nav li.active a {
+  color: #4BA40A;
+}
+.header_nav_item-hot a:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -2px;
+  right: -10px;
+  border-radius: 50%;
+  background: #4BA40A;
+}
+
+.header_logo {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 150px;
+  margin-top: 8px; /* 8px top margin, 0 for right and left margin, 0 for bottom margin */
+  /*margin-left: -75px;*/
+  text-align: center;
+}
+.header_logo img {
+  width: 180px;
+}
+
+.logo {
+  width: 185px;
+  display: block;
+  line-height: 0;
+}
+
+.button-nav {
+  position: relative;
+  z-index: 15;
+  margin-left: auto;
+  z-index: 50;
+  height: 28px;
+  width: 28px;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.button-nav span {
+  backface-visibility: hidden;
+  position: relative;
+  background: #000;
+  transition: all 0.3s ease-out;
+  width: 20px;
+  height: 2px;
+  display: block;
+  margin: 0px 0 0px 5px;
+}
+.button-nav span:before, .button-nav span:after {
+  transition: all 0.3s linear;
+  backface-visibility: hidden;
+  content: "";
+  background: #000;
+  left: 0px;
+  height: 2px;
+  display: block;
+  width: 20px;
+  position: absolute;
+}
+.button-nav span:before {
+  top: 7px;
+}
+.button-nav span:after {
+  bottom: 7px;
+}
+.button-nav.active span {
+  background: transparent;
+}
+.button-nav.active span:before {
+  top: 0;
+  width: 22px;
+  left: 0px;
+  transform: rotate(45deg);
+}
+.button-nav.active span:after {
+  bottom: 0px;
+  width: 22px;
+  left: 0px;
+  transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 1023px) {
+  .noscroll-tablet {
+    overflow: hidden;
+  }
+  .header_nav {
+    margin: 0;
+    z-index: 14;
+    transition: all 0.4s;
+    top: 0rem;
+    width: 70%;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    overflow: auto;
+    background: #fff;
+    position: fixed;
+    padding: 0 8px;
+    right: 0%;
+    transform: translateX(100%);
+  }
+  .header_nav li {
+    margin: 0.3rem 0;
+  }
+  .header_nav li a {
+    font-size: 2rem;
+  }
+  .header_nav.opened {
+    transition: all 0.4s;
+    transform: translateX(0%);
+  }
+  .header_nav li:nth-child(4) {
+    /*margin-left: 0;*/
+  }
+  .button-nav {
+    display: flex;
+  }
+  .header_logo {
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 150px;
+    margin-top: 8px;
+  }
+  .header_mid {
+    margin: 2.6rem 0 0;
+    padding-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navoverlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navoverlay.active {
+    transition: all 0.4s;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+  .header_nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+  }
+  .header_nav li {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header_cols {
+    padding: 0.7rem 0;
+  }
+  .header_mid {
+    margin: 2rem 0 0;
+    padding-bottom: 2rem;
+  }
+
+  /*
+================================================================================
+|                                  DISABLED THE NAVIGATION MENU ON MOBILE      |
+================================================================================
+*/
+
+
+  .header_nav {
+  display: none;
+  }
+  .header_nav li{
+  display: none;
+  }
+  .header_nav li a{
+  display: none;
+  }
+  .header_categ_opener {
+  display: none;
+  }
+  .navoverlay {
+  /*display: none;*/
+  }
+  .header_categ {
+    display: none;
+  }
+  .header_categ a {
+    display: none;
+  }
+  /*  This is the main one controlling the menu icon appearing or not*/
+  .header_mid a {
+    display: none;
+  }
+
+}

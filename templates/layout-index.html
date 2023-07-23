@@ -5,22 +5,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% block title %}
     {% endblock %}
-   <title>Clever-Name</title>
+   <title>{{ branding_data.brand_title }}</title>
    <meta name='description' content=""/>
    <meta name="keywords" content=""/>
-   <link rel="icon" type="image/x-icon" href="../static/favicon.ico"/>
-   <link rel="stylesheet" type="text/css" href="../static/css/style.css" class="styles"/>
-   <link rel="stylesheet" type="text/css" href="../static/css/theme.css" class="styles"/>
+   <link rel="icon" type="image/x-icon" href="{{ branding_data.favicon_url }}"/>
+    {% include 'stylesheets.html' %}
+
     {% block extra_stylesheets %}
     {% endblock %}
       <style>
         :root {
           --primary_theme_color: {{ primary_theme_color }};
           --secondary_theme_color: {{ secondary_theme_color }};
-            --primary_theme_color_rgb: {{ primary_theme_color_rgb }};
-          --secondary_theme_color_rgb: {{ secondary_theme_color_rgb }};
-            --primary_theme_color_rgba: {{ primary_theme_color_rgba }};
-          --secondary_theme_color_rgba: {{ secondary_theme_color_rgba }};
         }
       </style>
 </head>

@@ -3,7 +3,7 @@
          <div class="footer_cols">
             <div class="footer_cols_item footer_cols_item-1">
                <div class="footer_title">About</div>
-               <div class="footer_txt">We are here to help you in saving both time and money. We provide tips, information, and recommendations to guide you in making financial decisions.
+               <div class="footer_txt">{{ branding_data.brand_description }}
                </div>
             </div>
             <div class="footer_cols_item footer_cols_item-2">
@@ -18,34 +18,53 @@
             <div class="footer_cols_item footer_cols_item-3">
                <div class="footer_title">Follow us</div>
                <div class="soc">
-                  <div class="soc_item">
-                     <a href="#" target="_blank">
-                        <span class="soc_item_icon"><img src="{{ url_for('static', filename='svg/fb.svg') }}" alt="FB"></span>
-                     </a>
-                  </div>
-                  <div class="soc_item">
-                     <a href="#" target="_blank">
-                        <span class="soc_item_icon"><img src="{{ url_for('static', filename='svg/tw.svg') }}" alt="Twitter Icon"></span></span>
-                     </a>
-                  </div>
-                  <div class="soc_item">
-                     <a href="#" target="_blank">
-                        <span class="soc_item_icon">
-                            <img src="{{ url_for('static', filename='svg/youtube.svg') }}" alt="YouTube Icon">
+                   {% if branding_data.social_active_fb %}
+                      <div class="soc_item">
+                         <a href="{{ branding_data.social_url_fb }}" target="_blank">
+                            <span class="soc_item_icon"><img src="{{ url_for('static', filename='svg/fb.svg') }}" alt="FB"></span>
+                         </a>
+                      </div>
+                   {% endif %}
+                   {% if branding_data.social_active_twitter %}
+                      <div class="soc_item">
+                         <a href="{{ branding_data.social_url_twitter }}" target="_blank">
+                            <span class="soc_item_icon"><img src="{{ url_for('static', filename='svg/tw.svg') }}" alt="Twitter Icon"></span></span>
+                         </a>
+                      </div>
+                   {% endif %}
+                   {% if branding_data.social_active_youtube %}
+                      <div class="soc_item">
+                         <a href="{{ branding_data.social_url_instagram }}" target="_blank">
+                            <span class="soc_item_icon">
+                                <img src="{{ url_for('static', filename='svg/youtube.svg') }}" alt="YouTube Icon">
 
-                        </span>
-                     </a>
-                  </div>
-                  <div class="soc_item">
-                     <a href="#" target="_blank">
-                        <span class="soc_item_icon"><img src="{{ url_for('static', filename='svg/instagram.svg') }}" alt="Instagram Icon"></span>
-                     </a>
-                  </div>
+                            </span>
+                         </a>
+                      </div>
+                   {% endif %}
+                   {% if branding_data.social_active_instagram %}
+                      <div class="soc_item">
+                         <a href="{{ branding_data.social_url_instagram }}" target="_blank">
+                            <span class="soc_item_icon"><img src="{{ url_for('static', filename='svg/instagram.svg') }}" alt="Instagram Icon"></span>
+                         </a>
+                      </div>
+                   {% endif %}
                </div>
             </div>
          </div>
+         <div class="footer_disclaimer_cols">
+             <div class="footer_disclaimer_item">
+                 <div class="footer_disclaimer">
+                     <p>{{ branding_data.brand_disclaimer_1 }}</p>
+                     <p>{{ branding_data.brand_disclaimer_2 }}</p>
+                     <p>Some of the links on this website are affiliate links, which means that we may earn a commission if you click on the link or make a purchase using the link. When you make a purchase, the price you pay will be the same whether you use the affiliate link or go directly to the vendor's website using a non-affiliate link. By using the affiliate links, you are helping support the
+                         {{ branding_data.brand_title }} website, and we genuinely appreciate your support.</p>
+               </div>
+             </div>
+
+         </div>
          <div class="footer_bot">
-            <div class="footer_copy">©{{ branding_data.brand_title }} 2023. All rights reserved</div>
+            <div class="footer_copy">©{{ branding_data.brand_title }} {{ year }}. All rights reserved</div>
             <div class="footer_links">
                <a href="{{ url_for('privacy_policy_view') }}">Privacy Policy</a> <span class="dash"></span> <a href="{{ url_for('terms_and_conditions_view') }}">Terms & Conditions</a>
             </div>

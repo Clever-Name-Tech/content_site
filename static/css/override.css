@@ -1,0 +1,158 @@
+@media screen and (min-width: 1200px) {
+
+  .welcome_slider {
+    max-width: 90%;
+  }
+  .footer_disclaimer {
+  font-size: 1.5rem;
+}
+
+  .pagetitle {
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 120%;
+  font-family: "Jost", sans-serif;
+  color: #000;
+}
+.pagetitle h1, .pagetitle .h1 {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 120%;
+}
+
+
+  .article_tags_title {
+  margin: -0.4rem 2rem 0rem 0;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 130%;
+  text-transform: capitalize;
+  color: #000000;
+}
+.article_tags a {
+  color: #555555;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 160%;
+}
+
+.popular_main_txt {
+  max-height: 5.2rem;
+  overflow: hidden;
+  font-size: 1.6rem;
+  margin: 1.5rem 0 2.5rem;
+  line-height: 163%;
+}
+.popular_item_title {
+  overflow: hidden;
+  height: 6rem;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 130%;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+.stories_item_title {
+  max-height: 5.2rem;
+  overflow: hidden;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 130%;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+  .recent_item_txt {
+  font-size: 16px;
+  max-height: 7.8rem;
+  overflow: hidden;
+  line-height: 163%;
+  margin: 0.3rem 0 3.2rem;
+}
+
+    .header_txt {
+  padding-top: 1.8rem;
+  margin: 3.5rem 0 3rem;
+  font-size: 1.8rem;
+  line-height: 160%;
+  border-top: 2px solid #000;
+}
+
+
+}
+
+
+@media screen and (max-width: 1199px) {
+    h1, .h1 {
+    font-size: 4.1rem;
+  }
+  h2, .h2 {
+    font-size: 3rem;
+  }
+
+  .btn-arr {
+    width: 4rem;
+    height: 4rem;
+  }
+  .recent_item_txt {
+    margin: 0.3rem 0 2.5rem;
+  }
+
+
+}
+
+@media screen and (max-width: 1023px) {
+
+}
+
+@media screen and (max-width: 1023px) and (min-width: 600px) {
+
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 9px !important;
+  }
+
+  h1, .h1 {
+    font-size: 3.4rem;
+  }
+  h2, .h2 {
+    font-size: 3.4rem;
+  }
+  h3, .h3 {
+    font-size: 2.8rem;
+  }
+  h4, .h4 {
+    font-size: 2rem;
+  }
+  .footer_disclaimer {
+  font-size: 1.7rem;
+}
+
+}
+
+@media screen and (max-width: 599px) {
+      body {
+    font-size: 1.7rem;
+  }
+    .footer_disclaimer {
+  font-size: 1.6rem;
+}
+}
+
+@media screen and (max-width: 374px) {
+    body {
+        font-size: 1.6rem;
+    }
+    .footer_disclaimer {
+  font-size: 1.5rem;
+}
+}

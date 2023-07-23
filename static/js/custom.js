@@ -32,7 +32,7 @@ $(window).on('load', function () {
    }, 1000);
    setTimeout(function () {
       $("head").append('<link rel="preload preconnect" href="https://fonts.gstatic.com" as="style">');
-      $("head").append('<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Spartan:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">');
+      $("head").append('<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">');
    }, 1100);
 
    function maskedInput() {
@@ -136,8 +136,8 @@ $(function () {
          slidesToShow  : 3,
          slidesToScroll: 1,
          autoplaySpeed : 3000,
-         prevArrow     : '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button"><span class="icon-arr"></span</button>',
-         nextArrow     : '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button"><span class="icon-arr"></span></button>',
+         prevArrow     : '<button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button"><i class="material-icons">arrow_forward</i></button>',
+         nextArrow     : '<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button"><i class="material-icons">arrow_forward</i></button>',
          responsive    : [
             {
                breakpoint: 1024,
