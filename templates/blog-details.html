@@ -4,6 +4,19 @@
    <title>{{ branding_data.brand_title }}</title>
  {% endblock %}
 
+{% block head_meta %}
+    <meta property="og:title" content="{{ article.headline}}">
+    <meta property="og:description" content="{{ article.description }}">
+    <meta property="og:image" content="{{ article.img_url_1 }}">
+{#    <meta property="og:url" content="">#}
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@shortmoneysite">
+    <meta name="twitter:creator" content="@shortmoneysite">
+    <meta name="twitter:title" content="{{ article.headline}}">
+    <meta name="twitter:description" content="{{ article.description }}">
+    <meta name="twitter:image" content="{{ article.img_url_1 }}">
+{% endblock %}
 
 {% block content %}
    <!-- BEGIN CONTENT -->
